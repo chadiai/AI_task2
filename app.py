@@ -45,11 +45,11 @@ y = df['Type']
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=random_seed)
 
 if model == "Random Forest":
-    clf = RandomForestClassifier(n_estimators=n_estimators)
+    clf = RandomForestClassifier(n_estimators=n_estimators,random_state=random_seed)
 elif model == "C-Support Vector Classification":
-    clf = SVC(C=c)
+    clf = SVC(C=c,random_state=random_seed)
 elif model == "Gradient Boosting":
-    clf = GradientBoostingClassifier(n_estimators=n_estimators)
+    clf = GradientBoostingClassifier(n_estimators=n_estimators,random_state=random_seed)
 clf.fit(x_train, y_train)
 y_pred = clf.predict(x_test)
 accuracy = metrics.accuracy_score(y_test, y_pred)
